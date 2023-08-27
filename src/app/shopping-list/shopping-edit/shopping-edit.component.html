@@ -1,1 +1,49 @@
-<p>shopping-edit works!</p>
+<div class="row">
+  <div class="col-xs-12">
+    <form name="ingredientForm">
+      <div class="row">
+        <div class="col-sm-5 form-group">
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            class="form-control"
+            name="name"
+            #nameInput
+          />
+        </div>
+
+        <div class="col-sm-2 form-group">
+          <label for="amount">Amount</label>
+          <input
+            type="number"
+            id="amount"
+            class="form-control"
+            name="amount"
+            #amountInput
+          />
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-xs-12">
+          <button
+            class="btn btn-success"
+            type="submit"
+            (click)="onAddIngredient()"
+          >
+            + Add
+          </button>
+          <button
+            class="btn btn-danger delete-ingredient"
+            type="button"
+            (click)="onIngredientDelete()"
+          >
+            Delete
+          </button>
+          <button class="btn btn-warning" type="reset">Clear</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
