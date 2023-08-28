@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 
-import { recipes } from 'src/app/constants/Recipes';
-import { Recipe } from 'src/app/models/recipe.model';
+import { recipes } from 'src/constants/Recipes';
+import { Recipe } from 'src/models/recipe.model';
 
 @Component({
   selector: 'app-recipe-list',

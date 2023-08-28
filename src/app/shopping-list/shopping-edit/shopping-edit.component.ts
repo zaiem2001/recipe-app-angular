@@ -1,6 +1,6 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
-import { ingredients } from 'src/app/constants/Ingredients';
-import { Ingredient } from 'src/app/models/ingredient.model';
+import { ingredients } from 'src/constants/Ingredients';
+import { Ingredient } from 'src/models/ingredient.model';
 
 @Component({
   selector: 'app-shopping-edit',
