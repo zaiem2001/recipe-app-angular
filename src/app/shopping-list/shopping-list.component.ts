@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Ingredient } from '../models/ingredient.model';
-import { ingredients } from '../constants/Ingredients';
+import { Ingredient } from '../../models/ingredient.model';
+import { ingredients } from '../../constants/Ingredients';
 
 @Component({
   selector: 'app-shopping-list',
