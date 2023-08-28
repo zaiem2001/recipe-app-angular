@@ -1,6 +1,7 @@
 import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ingredients } from 'src/constants/Ingredients';
 import { Ingredient } from 'src/models/ingredient.model';
+import { ShoppingListService } from 'src/services/shopping-list.service';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -12,7 +13,7 @@ export class ShoppingEditComponent {
   @ViewChild('nameInput', { static: false }) nameRef: ElementRef;
   @ViewChild('amountInput', { static: false }) amountRef: ElementRef;
 
-  constructor() {}
+  constructor(private shoppingListService: ShoppingListService) {}
 
   onAddIngredient() {
     const ingName = this.nameRef.nativeElement.value;
@@ -20,16 +21,12 @@ export class ShoppingEditComponent {
     const ingredientId = ingredients.length;
 
     if (ingName.trim() && ingAmount) {
-      const newIngredient = new Ingredient(ingName, ingAmount, ingredientId);
-      ingredients.push(newIngredient);
+      this.shoppingListService.addIngredients({
+        name: ingName,
+        amount: ingAmount,
+        id: ingredientId,
+      });
     }
-
-    // const { name, amount } = e.target;
-    // const newIngredient = new Ingredient(
-    //   name.value,
-    //   amount.value,
-    //   ingredientId
-    // );
   }
 
   onIngredientDelete() {
@@ -38,8 +35,10 @@ export class ShoppingEditComponent {
         (element) => element.id === this.selectedIngredient.id
       );
 
-      ingredients.splice(indexOfElement, 1);
-      this.selectedIngredient = null;
+      this.shoppingListService.deleteIngredient(
+        indexOfElement,
+        () => (this.selectedIngredient = null)
+      );
     }
   }
 }
