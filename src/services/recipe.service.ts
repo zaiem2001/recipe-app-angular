@@ -3,6 +3,7 @@ import { ingredients } from 'src/constants/Ingredients';
 import { recipes } from 'src/constants/Recipes';
 import { Ingredient } from 'src/models/ingredient.model';
 import { Recipe } from 'src/models/recipe.model';
+import { generateId } from 'src/utils/generateId.helper';
 
 @Injectable()
 export class RecipeService {
@@ -15,15 +16,15 @@ export class RecipeService {
 
   addToShoppoingList(recipeIngredients: Ingredient[]) {
     recipeIngredients.forEach((recipeIng) => {
-      const isIngredientPresent = ingredients.find(
+      const foundIngredient = ingredients.find(
         (ingredient) => ingredient.name === recipeIng.name
       );
 
-      if (!!isIngredientPresent) {
-        ingredients[isIngredientPresent.id].amount += recipeIng.amount;
+      if (!!foundIngredient) {
+        foundIngredient.amount += recipeIng.amount;
       } else {
         ingredients.push(
-          new Ingredient(recipeIng.name, recipeIng.amount, ingredients.length)
+          new Ingredient(recipeIng.name, recipeIng.amount, generateId())
         );
       }
     });

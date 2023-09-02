@@ -2,6 +2,7 @@ import { Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ingredients } from 'src/constants/Ingredients';
 import { Ingredient } from 'src/models/ingredient.model';
 import { ShoppingListService } from 'src/services/shopping-list.service';
+import { generateId } from 'src/utils/generateId.helper';
 
 @Component({
   selector: 'app-shopping-edit',
@@ -18,7 +19,7 @@ export class ShoppingEditComponent {
   onAddIngredient() {
     const ingName = this.nameRef.nativeElement.value;
     const ingAmount = +this.amountRef.nativeElement.value;
-    const ingredientId = ingredients.length;
+    const ingredientId = generateId();
 
     if (ingName.trim() && ingAmount) {
       this.shoppingListService.addIngredients({
