@@ -1,6 +1,7 @@
 import { Ingredient } from 'src/models/ingredient.model';
 import { Recipe } from '../models/recipe.model';
 import { ingredients } from './Ingredients';
+import { generateId } from 'src/utils/generateId.helper';
 
 export const recipes: Recipe[] = [
   new Recipe(
@@ -11,7 +12,8 @@ export const recipes: Recipe[] = [
       new Ingredient('chicken', 1, ingredients.length),
       new Ingredient('curd', 3, ingredients.length),
       new Ingredient('tomatoes', 4, ingredients.length),
-    ]
+    ],
+    generateId()
   ),
   new Recipe(
     'Butter Chicken',
@@ -21,7 +23,8 @@ export const recipes: Recipe[] = [
       new Ingredient('chicken', 1, ingredients.length),
       new Ingredient('cream', 3, ingredients.length),
       new Ingredient('onion', 4, ingredients.length),
-    ]
+    ],
+    generateId()
   ),
   new Recipe(
     'Paneer Tikka',
@@ -31,7 +34,8 @@ export const recipes: Recipe[] = [
       new Ingredient('paneer', 1, ingredients.length),
       new Ingredient('curd', 3, ingredients.length),
       new Ingredient('mirchi', 4, ingredients.length),
-    ]
+    ],
+    generateId()
   ),
   new Recipe(
     'Masala Dosa',
@@ -41,6 +45,7 @@ export const recipes: Recipe[] = [
       new Ingredient('batter', 1, ingredients.length),
       new Ingredient('powder', 3, ingredients.length),
       new Ingredient('sambhar', 4, ingredients.length),
-    ]
+    ],
+    generateId()
   ),
 ];
