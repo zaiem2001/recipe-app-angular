@@ -5,14 +5,4 @@ import { Component } from '@angular/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css'],
 })
-export class AppComponent {
-  activeLink = '';
-
-  constructor() {
-    this.activeLink = 'recipes';
-  }
-
-  onLinkClick = (eventData: string) => {
-    this.activeLink = eventData;
-  };
-}
+export class AppComponent {}

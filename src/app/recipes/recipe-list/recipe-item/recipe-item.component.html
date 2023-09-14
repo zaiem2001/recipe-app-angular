@@ -1,8 +1,9 @@
 <a
-  href="#"
+  style="cursor: pointer"
   class="list-group-item clearfix"
   *ngIf="recipe"
-  (click)="onRecipeClick()"
+  [routerLink]="'/recipes/' + recipeId"
+  routerLinkActive="active"
 >
   <div class="pull-left">
     <h4 class="list-group-item-heading">{{ recipe?.name }}</h4>
