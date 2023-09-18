@@ -14,6 +14,7 @@ const getRecipeWithId = (idx: number) => recipes[idx];
 })
 export class RecipeDetailComponent implements OnInit {
   currentRecipe: Recipe | null;
+  recipeId: number;
 
   constructor(
     private recipeService: RecipeService,
@@ -22,8 +23,8 @@ export class RecipeDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
-      const recipeId = params['id'];
-      this.currentRecipe = getRecipeWithId(recipeId);
+      this.recipeId = params['id'];
+      this.currentRecipe = getRecipeWithId(+this.recipeId);
     });
   }
 
