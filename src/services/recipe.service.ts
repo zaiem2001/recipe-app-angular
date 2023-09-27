@@ -1,4 +1,5 @@
 import { Injectable, EventEmitter } from '@angular/core';
+import { Subject } from 'rxjs';
 import { ingredients } from 'src/constants/Ingredients';
 import { recipes } from 'src/constants/Recipes';
 import { Ingredient } from 'src/models/ingredient.model';
@@ -9,9 +10,14 @@ import { generateId } from 'src/utils/generateId.helper';
 export class RecipeService {
   onSelectRecipe = new EventEmitter<Recipe>();
   private recipesData: Recipe[] = recipes;
+  recipeChanges = new Subject<Recipe[]>();
 
   getRecipes() {
     return [...this.recipesData];
+  }
+
+  getRecipe(id: number) {
+    return this.recipesData[id];
   }
 
   addToShoppoingList(recipeIngredients: Ingredient[]) {
@@ -28,5 +34,20 @@ export class RecipeService {
         );
       }
     });
+  }
+
+  addOrUpdateRecipe(recipe: Recipe, isEditing: boolean, id?: number) {
+    if (isEditing) {
+      this.recipesData[id] = recipe;
+    } else {
+      this.recipesData.push(recipe);
+    }
+
+    this.recipeChanges.next(this.recipesData.slice());
+  }
+
+  deleteRecipe(id: number) {
+    this.recipesData.splice(id, 1);
+    this.recipeChanges.next(this.recipesData.slice())
   }
 }

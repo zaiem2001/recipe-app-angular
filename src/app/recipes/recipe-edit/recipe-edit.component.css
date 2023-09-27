@@ -1,0 +1,16 @@
+.image-preview {
+  max-width: 200px;
+}
+
+.image-preview img {
+  width: 100%;
+  object-fit: cover;
+}
+
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+textarea.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
