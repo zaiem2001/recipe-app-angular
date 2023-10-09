@@ -10,7 +10,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AuthComponent } from './auth/auth.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LoadingSpinnerComponent } from './loading-spinner/loading-spinner.component';
-import { RecipesModule } from './recipes/recipes.module';
 
 @NgModule({
   declarations: [
@@ -29,7 +28,6 @@ import { RecipesModule } from './recipes/recipes.module';
     AppRouterModule,
     ReactiveFormsModule,
     HttpClientModule,
-    RecipesModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
